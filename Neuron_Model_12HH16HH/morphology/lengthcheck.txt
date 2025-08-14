@@ -1,0 +1,167 @@
+NEURON Section Length Check Results for Reduced_adult_TF.asc neuron with template.hoc that shortens long apical section just proximal to nexus
+=====================================
+
+AXONAL SECTIONS:
+  axon[0]: L=90.00um  (AIS - replaced stub)
+  axon[1]: L=30.00um  (Axon proper - replaced stub)
+
+SUMMARY:
+========
+Total sections: 64
+- Soma: 1 section
+- Dendrites: 21 sections  
+- Apicals: 41 sections (apic[21] was modified)
+- Axons: 2 sections (replaced stubs)
+
+DETAILED SECTION DATA WITH DIAMETERS:
+====================================
+
+SOMA SECTIONS WITH DIAMETERS:
+  soma[0]: L=29.02um, diam(0)=14.14um, diam(1)=14.14um
+
+DENDRITIC SECTIONS WITH DIAMETERS:
+  dend[0]: L=79.14um, diam(0)=0.92um, diam(1)=0.92um
+  dend[1]: L=60.97um, diam(0)=0.92um, diam(1)=0.92um
+  dend[2]: L=84.09um, diam(0)=0.80um, diam(1)=0.80um
+  dend[3]: L=17.45um, diam(0)=1.55um, diam(1)=1.55um
+  dend[4]: L=32.18um, diam(0)=0.84um, diam(1)=0.84um
+  dend[5]: L=50.00um, diam(0)=0.11um, diam(1)=0.11um
+  dend[6]: L=90.00um, diam(0)=0.09um, diam(1)=0.09um
+  dend[7]: L=24.84um, diam(0)=1.16um, diam(1)=1.16um
+  dend[8]: L=97.19um, diam(0)=0.73um, diam(1)=0.73um
+  dend[9]: L=164.11um, diam(0)=0.72um, diam(1)=0.72um
+  dend[10]: L=8.42um, diam(0)=1.38um, diam(1)=1.38um
+  dend[11]: L=98.66um, diam(0)=0.93um, diam(1)=0.93um
+  dend[12]: L=103.49um, diam(0)=0.70um, diam(1)=0.70um
+  dend[13]: L=31.71um, diam(0)=0.92um, diam(1)=0.92um
+  dend[14]: L=74.77um, diam(0)=0.90um, diam(1)=0.90um
+  dend[15]: L=76.28um, diam(0)=0.84um, diam(1)=0.84um
+  dend[16]: L=34.91um, diam(0)=1.15um, diam(1)=1.15um
+  dend[17]: L=21.48um, diam(0)=0.94um, diam(1)=0.94um
+  dend[18]: L=77.27um, diam(0)=0.88um, diam(1)=0.88um
+  dend[19]: L=37.98um, diam(0)=0.70um, diam(1)=0.70um
+  dend[20]: L=135.76um, diam(0)=0.88um, diam(1)=0.88um
+
+APICAL SECTIONS WITH DIAMETERS:
+  apic[0]: L=31.41um, diam(0)=3.81um, diam(1)=3.81um
+  apic[1]: L=26.97um, diam(0)=2.95um, diam(1)=2.95um
+  apic[2]: L=16.06um, diam(0)=2.56um, diam(1)=2.56um
+  apic[3]: L=196.58um, diam(0)=0.74um, diam(1)=0.74um
+  apic[4]: L=17.32um, diam(0)=2.31um, diam(1)=2.31um
+  apic[5]: L=13.27um, diam(0)=1.13um, diam(1)=1.13um
+  apic[6]: L=26.90um, diam(0)=0.73um, diam(1)=0.73um
+  apic[7]: L=78.41um, diam(0)=0.92um, diam(1)=0.92um
+  apic[8]: L=45.45um, diam(0)=0.70um, diam(1)=0.70um
+  apic[9]: L=8.82um, diam(0)=0.92um, diam(1)=0.92um
+  apic[10]: L=41.84um, diam(0)=0.75um, diam(1)=0.75um
+  apic[11]: L=19.94um, diam(0)=2.12um, diam(1)=2.12um
+  apic[12]: L=39.97um, diam(0)=2.06um, diam(1)=2.06um
+  apic[13]: L=22.53um, diam(0)=1.89um, diam(1)=1.89um
+  apic[14]: L=27.02um, diam(0)=1.89um, diam(1)=1.89um
+  apic[15]: L=28.92um, diam(0)=1.95um, diam(1)=1.95um
+  apic[16]: L=3.18um, diam(0)=1.83um, diam(1)=1.83um
+  apic[17]: L=9.14um, diam(0)=1.83um, diam(1)=1.83um
+  apic[18]: L=9.77um, diam(0)=1.83um, diam(1)=1.83um
+  apic[19]: L=119.61um, diam(0)=0.82um, diam(1)=0.82um
+  apic[20]: L=28.60um, diam(0)=1.83um, diam(1)=1.83um
+  apic[21]: L=2.06um, diam(0)=1.88um, diam(1)=1.88um  *** SHORTENED! (was ~20.6um, now 10% of original)
+  apic[22]: L=319.46um, diam(0)=2.02um, diam(1)=2.02um
+  apic[23]: L=10.87um, diam(0)=1.48um, diam(1)=1.48um
+  apic[24]: L=15.34um, diam(0)=1.38um, diam(1)=1.38um
+  apic[25]: L=24.48um, diam(0)=0.95um, diam(1)=0.95um
+  apic[26]: L=139.62um, diam(0)=0.92um, diam(1)=0.92um
+  apic[27]: L=243.82um, diam(0)=0.92um, diam(1)=0.92um
+  apic[28]: L=11.50um, diam(0)=1.18um, diam(1)=1.18um
+  apic[29]: L=171.24um, diam(0)=0.92um, diam(1)=0.92um
+  apic[30]: L=46.25um, diam(0)=0.70um, diam(1)=0.70um
+  apic[31]: L=103.51um, diam(0)=0.92um, diam(1)=0.92um
+  apic[32]: L=97.58um, diam(0)=1.06um, diam(1)=1.06um
+  apic[33]: L=15.77um, diam(0)=0.95um, diam(1)=0.95um
+  apic[34]: L=41.97um, diam(0)=0.92um, diam(1)=0.92um
+  apic[35]: L=94.42um, diam(0)=0.69um, diam(1)=0.69um
+  apic[36]: L=133.63um, diam(0)=0.92um, diam(1)=0.92um
+  apic[37]: L=87.03um, diam(0)=0.92um, diam(1)=0.92um
+  apic[38]: L=142.86um, diam(0)=0.92um, diam(1)=0.92um
+  apic[39]: L=164.06um, diam(0)=1.35um, diam(1)=1.35um
+  apic[40]: L=105.62um, diam(0)=0.86um, diam(1)=0.86um
+
+AXONAL SECTIONS WITH DIAMETERS:
+  axon[0]: L=90.00um, diam(0)=1.00um, diam(1)=1.00um  (AIS - replaced stub)
+  axon[1]: L=30.00um, diam(0)=1.00um, diam(1)=1.00um  (Axon proper - replaced stub)
+
+DEBUG COMMANDS USED:
+===================
+Length only: [(sec.name(), f"L={sec.L:.2f}um") for sec in h.allsec()]
+With diameters: [(sec.name(), f"L={sec.L:.2f}um, diam(0)={sec(0).diam:.2f}um, diam(1)={sec(1).diam:.2f}um") for sec in h.allsec()]
+More human readable: print('\n'.join([f"{sec.name().split('.')[-1]}: L={sec.L:.2f}um, diam(0)={sec(0).diam:.2f}um, diam(1)={sec(1).diam:.2f}um" for sec in h.allsec()]))
+
+
+
+
+AFTER REDUCING THE SOMA DIAMETER BY 50%, ALL OTHERS THE SAME
+============================================================
+soma[0]: L=29.02um, diam(0)=7.07um, diam(1)=7.07um
+dend[0]: L=79.14um, diam(0)=0.92um, diam(1)=0.92um
+dend[1]: L=60.97um, diam(0)=0.92um, diam(1)=0.92um
+dend[2]: L=84.09um, diam(0)=0.80um, diam(1)=0.80um
+dend[3]: L=17.45um, diam(0)=1.55um, diam(1)=1.55um
+dend[4]: L=32.18um, diam(0)=0.84um, diam(1)=0.84um
+dend[5]: L=50.00um, diam(0)=0.11um, diam(1)=0.11um
+dend[6]: L=90.00um, diam(0)=0.09um, diam(1)=0.09um
+dend[7]: L=24.84um, diam(0)=1.16um, diam(1)=1.16um
+dend[8]: L=97.19um, diam(0)=0.73um, diam(1)=0.73um
+dend[9]: L=164.11um, diam(0)=0.72um, diam(1)=0.72um
+dend[10]: L=8.42um, diam(0)=1.38um, diam(1)=1.38um
+dend[11]: L=98.66um, diam(0)=0.93um, diam(1)=0.93um
+dend[12]: L=103.49um, diam(0)=0.70um, diam(1)=0.70um
+dend[13]: L=31.71um, diam(0)=0.92um, diam(1)=0.92um
+dend[14]: L=74.77um, diam(0)=0.90um, diam(1)=0.90um
+dend[15]: L=76.28um, diam(0)=0.84um, diam(1)=0.84um
+dend[16]: L=34.91um, diam(0)=1.15um, diam(1)=1.15um
+dend[17]: L=21.48um, diam(0)=0.94um, diam(1)=0.94um
+dend[18]: L=77.27um, diam(0)=0.88um, diam(1)=0.88um
+dend[19]: L=37.98um, diam(0)=0.70um, diam(1)=0.70um
+dend[20]: L=135.76um, diam(0)=0.88um, diam(1)=0.88um
+apic[0]: L=31.41um, diam(0)=3.81um, diam(1)=3.81um
+apic[1]: L=26.97um, diam(0)=2.95um, diam(1)=2.95um
+apic[2]: L=16.06um, diam(0)=2.56um, diam(1)=2.56um
+apic[3]: L=196.58um, diam(0)=0.74um, diam(1)=0.74um
+apic[4]: L=17.32um, diam(0)=2.31um, diam(1)=2.31um
+apic[5]: L=13.27um, diam(0)=1.13um, diam(1)=1.13um
+apic[6]: L=26.90um, diam(0)=0.73um, diam(1)=0.73um
+apic[7]: L=78.41um, diam(0)=0.92um, diam(1)=0.92um
+apic[8]: L=45.45um, diam(0)=0.70um, diam(1)=0.70um
+apic[9]: L=8.82um, diam(0)=0.92um, diam(1)=0.92um
+apic[10]: L=41.84um, diam(0)=0.75um, diam(1)=0.75um
+apic[11]: L=19.94um, diam(0)=2.12um, diam(1)=2.12um
+apic[12]: L=39.97um, diam(0)=2.06um, diam(1)=2.06um
+apic[13]: L=22.53um, diam(0)=1.89um, diam(1)=1.89um
+apic[14]: L=27.02um, diam(0)=1.89um, diam(1)=1.89um
+apic[15]: L=28.92um, diam(0)=1.95um, diam(1)=1.95um
+apic[16]: L=3.18um, diam(0)=1.83um, diam(1)=1.83um
+apic[17]: L=9.14um, diam(0)=1.83um, diam(1)=1.83um
+apic[18]: L=9.77um, diam(0)=1.83um, diam(1)=1.83um
+apic[19]: L=119.61um, diam(0)=0.82um, diam(1)=0.82um
+apic[20]: L=28.60um, diam(0)=1.83um, diam(1)=1.83um
+apic[21]: L=2.06um, diam(0)=1.88um, diam(1)=1.88um
+apic[22]: L=319.46um, diam(0)=2.02um, diam(1)=2.02um
+apic[23]: L=10.87um, diam(0)=1.48um, diam(1)=1.48um
+apic[24]: L=15.34um, diam(0)=1.38um, diam(1)=1.38um
+apic[25]: L=24.48um, diam(0)=0.95um, diam(1)=0.95um
+apic[26]: L=139.62um, diam(0)=0.92um, diam(1)=0.92um
+apic[27]: L=243.82um, diam(0)=0.92um, diam(1)=0.92um
+apic[28]: L=11.50um, diam(0)=1.18um, diam(1)=1.18um
+apic[29]: L=171.24um, diam(0)=0.92um, diam(1)=0.92um
+apic[30]: L=46.25um, diam(0)=0.70um, diam(1)=0.70um
+apic[31]: L=103.51um, diam(0)=0.92um, diam(1)=0.92um
+apic[32]: L=97.58um, diam(0)=1.06um, diam(1)=1.06um
+apic[33]: L=15.77um, diam(0)=0.95um, diam(1)=0.95um
+apic[34]: L=41.97um, diam(0)=0.92um, diam(1)=0.92um
+apic[35]: L=94.42um, diam(0)=0.69um, diam(1)=0.69um
+apic[36]: L=133.63um, diam(0)=0.92um, diam(1)=0.92um
+apic[37]: L=87.03um, diam(0)=0.92um, diam(1)=0.92um
+apic[38]: L=142.86um, diam(0)=0.92um, diam(1)=0.92um
+apic[39]: L=164.06um, diam(0)=1.35um, diam(1)=1.35um
+apic[40]: L=105.62um, diam(0)=0.86um, diam(1)=0.86um
+axon[0]: L=90.00um, diam(0)=1.00um, diam(1)=1.00um
+axon[1]: L=30.00um, diam(0)=1.00um, diam(1)=1.00um

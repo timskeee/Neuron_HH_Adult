@@ -1,0 +1,137 @@
+
+./CaDynamics_E2.c: ../mechanisms/CaDynamics_E2.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) CaDynamics_E2.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./CaDynamics_E2.o: ./CaDynamics_E2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./Ca_HVA.c: ../mechanisms/Ca_HVA.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) Ca_HVA.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./Ca_HVA.o: ./Ca_HVA.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./Ca_LVAst.c: ../mechanisms/Ca_LVAst.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) Ca_LVAst.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./Ca_LVAst.o: ./Ca_LVAst.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./Ih.c: ../mechanisms/Ih.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) Ih.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./Ih.o: ./Ih.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./Im.c: ../mechanisms/Im.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) Im.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./Im.o: ./Im.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./K_Pst.c: ../mechanisms/K_Pst.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) K_Pst.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./K_Pst.o: ./K_Pst.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./K_Tst.c: ../mechanisms/K_Tst.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) K_Tst.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./K_Tst.o: ./K_Tst.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./ProbAMPANMDA_EMS.c: ../mechanisms/ProbAMPANMDA_EMS.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) ProbAMPANMDA_EMS.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./ProbAMPANMDA_EMS.o: ./ProbAMPANMDA_EMS.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./ProbGABAAB_EMS.c: ../mechanisms/ProbGABAAB_EMS.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) ProbGABAAB_EMS.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./ProbGABAAB_EMS.o: ./ProbGABAAB_EMS.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./SK_E2.c: ../mechanisms/SK_E2.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) SK_E2.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./SK_E2.o: ./SK_E2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./SKv3_1.c: ../mechanisms/SKv3_1.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) SKv3_1.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./SKv3_1.o: ./SKv3_1.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./branching.c: ../mechanisms/branching.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) branching.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./branching.o: ./branching.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./na12annaTFHH.c: ../mechanisms/na12annaTFHH.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) na12annaTFHH.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./na12annaTFHH.o: ./na12annaTFHH.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./na12annaTFHHmut.c: ../mechanisms/na12annaTFHHmut.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) na12annaTFHHmut.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./na12annaTFHHmut.o: ./na12annaTFHHmut.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./na16HH_TF.c: ../mechanisms/na16HH_TF.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) na16HH_TF.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./na16HH_TF.o: ./na16HH_TF.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./na16HHmut_TF_wtcopy.c: ../mechanisms/na16HHmut_TF_wtcopy.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) na16HHmut_TF_wtcopy.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./na16HHmut_TF_wtcopy.o: ./na16HHmut_TF_wtcopy.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./vclmp_pl.c: ../mechanisms/vclmp_pl.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../mechanisms"; MODLUNIT=$(NRNUNITS) $(NOCMODL) vclmp_pl.mod -o "/NG/Neuron_Model_12HH16HH/x86_64")
+
+./vclmp_pl.o: ./vclmp_pl.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+

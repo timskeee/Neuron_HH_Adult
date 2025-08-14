@@ -1,0 +1,2 @@
+Type,AP_height,AP_width,AP1_peak,AP1_width,Spikecount,ISI mean,dvdt Peak1 Height,dvdt Peak1 Voltage,dvdt Peak2 Height,dvdt Peak2 Voltage,dvdt Threshold,dvdt Threshold_DEBUG,ais spikecount,nex spikecount,disdend spikecount
+20:80,-1.0086632526298187,3.099999999999824,4.899988407745309,1.2432984953037978,38,44.40810810809193,119.14411659128277,-34.98728191631344,103.3430617494016,-14.488581963795475,-45.585622251725496,-45.585622251725496,38,0,0

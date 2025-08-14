@@ -1,0 +1,2 @@
+Type,AP_height,AP_width,AP1_peak,AP1_width,Spikecount,ISI mean,dvdt Peak1 Height,dvdt Peak1 Voltage,dvdt Peak2 Height,dvdt Peak2 Voltage,dvdt Threshold,dvdt Peak2 Shoulder Before,dvdt Peak2 Shoulder After,dvdt Threshold_DEBUG,ais spikecount,nex spikecount,disdend spikecount
+./Plots/12HH16HH//23-PaperPlots/3-SynthMuts_052325/mut2_4,30.354798165684624,0.0,32.15549377271415,1.410971270528219,9,55.52500000000791,399.8224704890086,4.812851243065733,397.56839116475334,5.100061188144349,-47.5093218705396,396.76028268864246,397.6909261857787,-47.5093218705396,9,0,0

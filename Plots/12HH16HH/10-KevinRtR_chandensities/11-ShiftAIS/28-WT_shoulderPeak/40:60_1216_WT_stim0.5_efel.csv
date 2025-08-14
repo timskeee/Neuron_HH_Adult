@@ -1,0 +1,2 @@
+Type,AP_height,AP_width,AP1_peak,AP1_width,Spikecount,ISI mean,dvdt Peak1 Height,dvdt Peak1 Voltage,dvdt Peak2 Height,dvdt Peak2 Voltage,dvdt Threshold,dvdt Peak2 Shoulder,dvdt Threshold_DEBUG,ais spikecount,nex spikecount,disdend spikecount
+./Plots/12HH16HH/10-KevinRtR_chandensities/11-ShiftAIS/28-WT_shoulderPeak/WT_40:60,4.149221833823425,2.6999999999998465,7.672179683993269,1.2127655932793444,39,43.96315789472046,191.41240285029076,-29.500087095807977,191.41240285029076,-29.500087095807977,-46.29246747171719,155.39447964423925,-46.29246747171719,39,0,0
