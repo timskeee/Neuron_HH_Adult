@@ -99,3 +99,4 @@ x86_64/NaTs2_t.o
 x86_64/nax8st.c
 x86_64/nax8st.o
 *.pyc
+Plots/

@@ -618,8 +618,80 @@ def combine_pdfs_flexible(folder, output_folder, match_length=None, match_suffix
         print(f"Successfully combined PDFs into {output_pdf}")
 
 
+def plot_and_auc_for_folder(folder, save_plots=True, plot_dir_name='plots_auc',csv_out='FI_AUCs'):
+    """
+    For each txt file in the folder, plot the curve and calculate area under the curve.
+
+    Args:
+        folder (str): Path to folder containing txt files (each with 140 y-values).
+        save_plots (bool): If True, saves each plot as PNG in plot_dir.
+        plot_dir (str): Directory to save plots.
+
+    Returns:
+        dict: {filename: auc_value}
+    """
+    plot_output = os.path.join(folder, plot_dir_name)
+    if save_plots and not os.path.exists(plot_output):
+        os.makedirs(plot_output)
+
+    auc_dict = {}
+    x = np.linspace(-0.4, 1, 140)
+
+    for fname in os.listdir(folder):
+        if fname.endswith('.txt'):
+            fpath = os.path.join(folder, fname)
+            with open(fpath, 'r') as f:
+                # Try to read as list of floats
+                y = eval(f.read())
+                y = np.array(y, dtype=float)
+                if y.shape[0] != 140:
+                    print(f"Warning: {fname} does not have 140 values, skipping.")
+                    continue
+
+            auc = np.trapz(y, x)
+            auc_dict[fname] = auc
+            # print(auc_dict)
+            plt.figure()
+            plt.plot(x, y, label=fname)
+            plt.title(f"{fname} (AUC={auc:.2f})")
+            plt.xlabel("Injected Current (nA)")
+            plt.ylabel("APs per 500ms epoch")
+            plt.legend()
+            if save_plots:
+                plt.savefig(os.path.join(plot_output, f"{fname}.png"))
+            plt.close()
+    
+    # Write AUC results to CSV if requested
+    if csv_out:
+        with open(f'{plot_output}/{csv_out}.csv', 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(['filename', 'auc'])
+            for fname, auc in auc_dict.items():
+                writer.writerow([fname, auc])
+
+    return auc_dict
 
 
+def first_positive_time_in_csvs(input_folder, output_csv):
+  input_folder = "./Plots/12HH16HH/28-AP_initiation"  # Change to your folder path
+  output_csv = f"{input_folder}/first_positive_times.csv"
+
+  results = []
+
+  for fname in os.listdir(input_folder):
+      if fname.endswith(".csv"):
+          fpath = os.path.join(input_folder, fname)
+          df = pd.read_csv(fpath)
+          # Assumes columns: 'time', 'Vm'
+          idx = (df['Vm'] > 0).idxmax()
+          if df['Vm'][idx] > 0:
+              results.append([fname, df['time'][idx], df['Vm'][idx]])
+          else:
+              results.append([fname, None, None])
+
+  out_df = pd.DataFrame(results, columns=['filename', 'first_positive_time', 'voltage'])
+  out_df.to_csv(output_csv, index=False)
+  print(f"Saved summary to {output_csv}")
 
 
 # combined_dict = combine_dictionaries(folder_path='/global/homes/t/tfenton/Neuron_general-2/params/na16_HOF_params_JSON', new_file='/global/homes/t/tfenton/Neuron_general-2/params/na16_HOF_params_JSON/combined3.json')
@@ -640,7 +712,7 @@ def combine_pdfs_flexible(folder, output_folder, match_length=None, match_suffix
 #plot_efeatures_bar(plot_folder='/global/homes/t/tfenton/Neuron_general-2/Plots/12HMM16HH_TF/ManuscriptFigs/efeatures',pfx='soma')
 
 
-combine_efel_csvs(folder_path='./Plots/12HH16HH/23-PaperPlots/3-SynthMuts_052325', output_file='./Plots/12HH16HH/23-PaperPlots/3-SynthMuts_052325/synthmuts_combined_efel_052725.csv')
+# combine_efel_csvs(folder_path='./Plots/12HH16HH/23-PaperPlots/3-SynthMuts_052325', output_file='./Plots/12HH16HH/23-PaperPlots/3-SynthMuts_052325/synthmuts_combined_efel_052725.csv')
 # efel_heatmaps('./Plots/12HH16HH/10-KevinRtR_chandensities/11-ShiftAIS/30-newCombinedCsvs/Updated_EFEL_peak2', './Plots/12HH16HH/10-KevinRtR_chandensities/11-ShiftAIS/30-newCombinedCsvs/Updated_EFEL_peak2')
 # rename_files_and_folders('./Plots/12HH16HH/10-KevinRtR_chandensities/11-ShiftAIS')
 
@@ -651,3 +723,6 @@ combine_efel_csvs(folder_path='./Plots/12HH16HH/23-PaperPlots/3-SynthMuts_052325
 #                       match_suffix='wtvmut')
 
 
+# plot_and_auc_for_folder(folder='./Plots/12HH16HH/23-PaperPlots/Fig4',
+#                         save_plots=True)
+first_positive_time_in_csvs(input_folder='./Plots/12HH16HH/28-AP_initiation', output_csv=f'./Plots/12HH16HH/28-AP_initiation/first_positive_times.csv')

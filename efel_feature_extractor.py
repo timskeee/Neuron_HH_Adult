@@ -256,7 +256,7 @@ def get_features(sim,prefix=None,mut_name = 'na12annaTFHH2',rec_extra=True): #ad
     plt.title('Filtered Voltage Segment with Least Change in Slope')
 
     # Save the plot as a PDF
-    fig.savefig(f'{mut_name}_dvdt_slopes.pdf')
+    fig.savefig(f'{prefix}{mut_name}_dvdt_slopes.pdf')
     ##-----------------------------------------------------------------------------------------------------##
     #### End shoulder-finding code ####
     ##-----------------------------------------------------------------------------------------------------##

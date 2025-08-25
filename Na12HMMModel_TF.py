@@ -12,6 +12,7 @@ import csv
 
 
 class Na12Model_TF:
+    
     def __init__(self,na12name = 'na12annaTFHH2',mut_name= 'na12annaTFHH2',  na12mechs = ['na12','na12mut'],na16name = 'na16HH_TF2',na16mut_name ='na16HH_TF2', na16mechs = ['na16','na16'], params_folder = './params/na12HMM_HOF_params/', ## na16name='na16_orig2',na16mechs = ['na16','na16mut'], na16mut_name='na16'
                  nav12=1,nav16=1,K=1,KT=1,KP=1,somaK=1,ais_ca = 1,ais_Kca = 1,soma_na16=1,soma_na12 = 1,node_na = 1,plots_folder = './Plots/12HMM16HH_TF/SynthMuts_120523/',pfx='testprefix', ais_nav16_fac=1,ais_nav12_fac=1, dend_nav12=1,dend_nav16=1,
                  update = None, fac=None): ##TF012524 added ais_nav16 ##Update=True if you want to run update_mech_from_dict in NeuronModel class
@@ -453,6 +454,60 @@ class Na12Model_TF:
         return Vm, I, t, stim #, ap_initiation
     
     
+    
+    def get_stim_raw_data_segments(self, stim_amp=0.5, dt=0.005, rec_extra=False, stim_dur=1600, sim_config=None):
+        """
+        Records voltage at multiple sections/segments specified in sim_config.
+        sim_config should have keys 'section', 'section_num', and 'segment', each as a list.
+        Returns: Vm_array (time x segment), I, t, stim
+
+        Example call:
+            sim_config = {
+            'section': ['axon', 'axon', 'soma'],
+            'section_num': [0, 1, 0],
+            'segment': [0.1, 0.5, 0.9]
+            }
+            Vm_array, I, t, stim = simwt.get_stim_raw_data_segments(stim_amp=0.5, dt=0.005, stim_dur=500, sim_config=sim_config)
+        """
+        if sim_config is None:
+            raise ValueError("sim_config must be provided and contain lists for 'section', 'section_num', and 'segment'.")
+
+        sections = sim_config.get('section', [])
+        section_nums = sim_config.get('section_num', [])
+        segments = sim_config.get('segment', [])
+        if not (isinstance(sections, list) and isinstance(section_nums, list) and isinstance(segments, list)):
+            raise ValueError("'section', 'section_num', and 'segment' in sim_config must be lists.")
+
+        self.dt = dt
+        self.l5mdl.init_stim(stim_dur=stim_dur, amp=stim_amp)
+
+        t_vec = h.Vector()
+        t_vec.record(h._ref_t)
+
+        seg_refs = []
+        for sec_name, sec_num, seg_x in zip(sections, section_nums, segments):
+            try:
+                sec = getattr(self.l5mdl.h.cell, sec_name)[sec_num]
+            except Exception as e:
+                print(f"Could not access section {sec_name}[{sec_num}]: {e}")
+                continue
+            seg = sec(seg_x)
+            seg_refs.append(seg)
+
+        volt_vecs = [h.Vector().record(seg._ref_v) for seg in seg_refs]
+
+        h.finitialize(-65)
+        h.continuerun(stim_dur)
+
+        t = np.array(t_vec)
+        Vm_array = np.array([np.array(v) for v in volt_vecs]).T  # shape: time x segment
+
+        # For compatibility, run the original sim for I, stim
+        Vm, I, t_orig, stim = self.get_stim_raw_data(stim_amp=stim_amp, dt=dt, rec_extra=rec_extra, stim_dur=stim_dur, sim_config=sim_config)
+
+        return Vm_array, I, t, stim
+    
+
     def plot_stim_firstpeak(self,stim_amp = 0.5,dt = 0.02,clr = 'black',plot_fn = 'step',axs = None,rec_extra = False,stim_start = 30, stim_dur = 500):
         self.dt = dt
         if not axs:
