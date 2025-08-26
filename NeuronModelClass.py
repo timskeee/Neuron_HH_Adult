@@ -324,6 +324,31 @@ class NeuronModel:
             
     # map_connectivity("insert12_numbered_connectivity.txt")
     
+    def get_gbar_sections(filename="gbars2.csv"):
+        """
+        Record gbar values for na12, na16, na12mut, na16mut, and Ih for every section.
+        Save to CSV with section name and index.
+        """
+        with open(filename, 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(["SectionName", "SectionIndex", "gbar_na12", "gbar_na16", "gbar_na12mut", "gbar_na16mut", "gbar_Ih"])
+            for idx, sec in enumerate(h.allsec()):
+                seg = sec(0.5)  # Use midpoint segment
+                def safe_gbar(mech_name, attr='gbar'):
+                    try:
+                        if hasattr(seg, mech_name):
+                            return getattr(getattr(seg, mech_name), attr)
+                    except Exception:
+                        pass
+                    return 'N/A'
+                gbar_na12 = safe_gbar('na12')
+                gbar_na16 = safe_gbar('na16')
+                gbar_na12mut = safe_gbar('na12mut')
+                gbar_na16mut = safe_gbar('na16mut')
+                gbar_Ih = safe_gbar('Ih', 'gIhbar')
+                writer.writerow([sec.name(), idx, gbar_na12, gbar_na16, gbar_na12mut, gbar_na16mut, gbar_Ih])
+        
+    # get_gbar_sections()
     
     ## Map all sections connectivity and list parent sections
     def map_connectivity_parentchild(filename="connectivity_map_parentchild.txt"):
@@ -540,7 +565,8 @@ class NeuronModel:
     # def init_stim(self, sweep_len = 60, stim_start = 30, stim_dur = 100, amp = 0.3, dt = 0.1): ##TF061424 getting single AP for SFARI grant
     
     
-    def init_stim(self, sweep_len = 150, stim_start = 30, stim_dur = 120, amp = 0.3, dt = 0.1): ##TF071524 getting 1-3 APs for Roy
+    # def init_stim(self, sweep_len = 150, stim_start = 30, stim_dur = 120, amp = 0.3, dt = 0.1): ##TF071524 getting 1-3 APs for Roy
+    def init_stim(self, sweep_len = 75, stim_start = 30, stim_dur = 75, amp = 0.3, dt = 0.1): ##TF071524 getting 1-3 APs for Roy
     
     # def init_stim(self, sweep_len = 200, stim_start = 100, stim_dur = 200, amp = 0.3, dt = 0.1): ##TF071524 getting 1-3 APs for Roy
     # def init_stim(self, sweep_len = 300, stim_start = 30, stim_dur = 200, amp = 0.3, dt = 0.1): ##TF071524 getting 1-3 APs for Roy

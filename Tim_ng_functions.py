@@ -673,8 +673,45 @@ def plot_and_auc_for_folder(folder, save_plots=True, plot_dir_name='plots_auc',c
 
 
 def first_positive_time_in_csvs(input_folder, output_csv):
-  input_folder = "./Plots/12HH16HH/28-AP_initiation"  # Change to your folder path
-  output_csv = f"{input_folder}/first_positive_times.csv"
+
+  '''
+  #################################################################################################
+  ##### Example usage to first get many csvs (1 for each segment, in this case for section axon[0])
+  ##################################################################################################
+  simwt = tf.Na12Model_TF(ais_nav12_fac=5.76,ais_nav16_fac=1.08*0.6,
+                            nav12=1.1*1.1,nav16=1.43*1.2, somaK=0.022, KP=3.9375, KT=5,
+                            ais_ca = 43*0.5,ais_Kca = 0.25,
+                            soma_na16=0.8,soma_na12=2.56,node_na = 1,
+                            dend_nav12=1,
+                            na12name = 'na12annaTFHH2',mut_name = 'na12annaTFHH2',na12mechs = ['na12','na12mut'],
+                            na16name = 'na16HH_TF2',na16mut_name = 'na16HH_TF2',na16mechs=['na16','na16mut'],params_folder = './params/',
+                            plots_folder = f'{root_path_out}/{path}', update=True, fac=None)
+
+
+
+for i in range(1,121):
+  # seg = i/121
+  seg = i/121
+
+  sim_config = {
+            'section': 'axon',
+            'section_num': 0,
+            'segment': seg,
+            'currents'  : ['ica_Ca_HVA','ica_Ca_LVAst','ik_K_Pst','ik_K_Tst','ik_SK_E2','ik_SKv3_1',
+                               'na12.ina_ina','na12mut.ina_ina','na16.ina_ina','na16mut.ina_ina','i_pas'], #AIS (no Ih)
+            'current_names' : ['Ca_HVA','Ca_LVAst','K_Pst','K_Tst','SK_E2','SKv3_1','Na12','Na12 MUT','Na16 WT','Na16 MUT','pas'],
+            'ionic_concentrations' :["ki", "nai","cai"]
+            }
+  Vm_array, I, t, stim = simwt.get_stim_raw_data(stim_amp=0.5, dt=0.005, stim_dur=120, sim_config=sim_config)
+  # Inside your for loop, for each segment:
+  df = pd.DataFrame({'time': t, 'Vm': Vm_array})
+  csv_path = f"{root_path_out}/Vm_segment_{seg}.csv"
+  df.to_csv(csv_path, index=False)
+  print(f"Saved Vm for segment {seg} to {csv_path}")
+'''
+
+  # input_folder = "./Plots/12HH16HH/28-AP_initiation"  # Change to your folder path
+  output_csv = f"{input_folder}/{output_csv}"
 
   results = []
 
@@ -683,8 +720,8 @@ def first_positive_time_in_csvs(input_folder, output_csv):
           fpath = os.path.join(input_folder, fname)
           df = pd.read_csv(fpath)
           # Assumes columns: 'time', 'Vm'
-          idx = (df['Vm'] > 0).idxmax()
-          if df['Vm'][idx] > 0:
+          idx = (df['Vm'] > -40).idxmax()
+          if df['Vm'][idx] > -40:
               results.append([fname, df['time'][idx], df['Vm'][idx]])
           else:
               results.append([fname, None, None])
@@ -725,4 +762,4 @@ def first_positive_time_in_csvs(input_folder, output_csv):
 
 # plot_and_auc_for_folder(folder='./Plots/12HH16HH/23-PaperPlots/Fig4',
 #                         save_plots=True)
-first_positive_time_in_csvs(input_folder='./Plots/12HH16HH/28-AP_initiation', output_csv=f'./Plots/12HH16HH/28-AP_initiation/first_positive_times.csv')
+first_positive_time_in_csvs(input_folder='./Plots/12HH16HH/29-AP_initiation_higher_res', output_csv=f'./Plots/12HH16HH/29-AP_initiation_higher_res/first_time_over-40.csv')

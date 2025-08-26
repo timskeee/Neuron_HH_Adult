@@ -173,7 +173,7 @@ config_dict2={"sim_config_nexus": sim_config_nexus,
 config_dict3={"sim_config_soma": sim_config_soma}
 
 for config_name, config in config_dict3.items():
-  path = f'28-AP_initiation'
+  path = f'29-AP_initiation_higher_res'
 
  
 
@@ -455,10 +455,16 @@ simwt = tf.Na12Model_TF(ais_nav12_fac=5.76,ais_nav16_fac=1.08*0.6,
                             na12name = 'na12annaTFHH2',mut_name = 'na12annaTFHH2',na12mechs = ['na12','na12mut'],
                             na16name = 'na16HH_TF2',na16mut_name = 'na16HH_TF2',na16mechs=['na16','na16mut'],params_folder = './params/',
                             plots_folder = f'{root_path_out}/{path}', update=True, fac=None)
+fig_volts,axs = plt.subplots(2,figsize=(cm_to_in(8),cm_to_in(15)))
+simwt.plot_stim(axs = axs[0],stim_amp = 0.5,dt=0.0005,stim_dur = 500, clr='cadetblue')
+plot_dvdt_from_volts(simwt.volt_soma, simwt.dt, axs[1],clr='cadetblue')
+fig_volts.savefig(f'{simwt.plot_folder}/WT_test.pdf') #Change output file path here
+input("breaker 19")
+# NeuronModel.get_gbar_sections()
+input("break break break")
 
 
-
-for i in range(1,121):
+for i in range(1,122):
   # seg = i/121
   seg = i/121
 
@@ -471,10 +477,14 @@ for i in range(1,121):
             'current_names' : ['Ca_HVA','Ca_LVAst','K_Pst','K_Tst','SK_E2','SKv3_1','Na12','Na12 MUT','Na16 WT','Na16 MUT','pas'],
             'ionic_concentrations' :["ki", "nai","cai"]
             }
-  Vm_array, I, t, stim = simwt.get_stim_raw_data(stim_amp=0.5, dt=0.005, stim_dur=120, sim_config=sim_config)
+  Vm_array, I, t, stim = simwt.get_stim_raw_data(stim_amp=0.5, dt=0.0005, stim_dur=120, sim_config=sim_config)
+  
+
+
+
   # Inside your for loop, for each segment:
   df = pd.DataFrame({'time': t, 'Vm': Vm_array})
-  csv_path = f"{root_path_out}/Vm_segment_{seg}.csv"
+  csv_path = f"{root_path_out}/{path}/Vm_segment_{i}.csv"
   df.to_csv(csv_path, index=False)
   print(f"Saved Vm for segment {seg} to {csv_path}")
 
